@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="container" style="position: relative; width:300px; height: 300px;">
+    <div id="container" style="position: relative; width:300px; height: 300px; overflow: hidden;">
         <!---素晴らしいな，こういうのを使えば，アメリカの各地域での何かみたいな統計も，日本の各地域でも，みたいなのが出せるのか-->
         <!---各都道府県をタップすれば何かが出てくるみたいなのも，当然できるはず，まあこんな感じに綺麗に分割されたものがあればの話だが--->
         <!---とはいえ，svg の見方もこれでなんとなくわかったので，別のやつでも使っていけそうな気がするな，素晴らしき svg をありがとう-->
@@ -408,8 +408,18 @@
                 </g>
             </g>
         </svg>
+        <!--position の指定は大事！！-->
+        <div id="message"
+            style="position: absolute;top:0px;left:0px; width: 300px; height: 300px; text-align: center; font-size: 12px; font-weight:bold; color: red;">
+        </div>
     </div>
 
+    <!--このあたりの，input 作りもやり方が美しいので記憶しておけ-->
+    <!--alignItems や justifyContent は使っても反映されなかった-->
+    <!--必要なのは，text-align だった（なんでや）-->
+    <div id="inputArea"
+        style="position: relative; width: 300px; justify-content: center; align-items: center; text-align: center; ">
+    </div>
     <div style="width:300px; font-size: 12px;">
         <p>
             <a href="https://ja.m.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Map_of_Japan_010.svg">Map of
