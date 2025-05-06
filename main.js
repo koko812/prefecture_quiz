@@ -65,6 +65,7 @@ const showPref = (id, angle) => {
     // これだと愛知県は動いてくれなかった・・・，translate を使うのがいいらしい？（なぜ動かないかはわからない）
     const { left, top, width, height, element } = prefInfoMap[id]
     element.style.opacity = 1
+    // ここは都道府県全体を移動させておかないと，正解表示の時に，正解都道府県とずれたところに日本地図が出てくる
     element.parentElement.style.transform = `translate(${-left}px, ${-top}px)`
     console.log(left, top);
 
@@ -105,14 +106,15 @@ const game = async () => {
             message.textContent = `不正解！ ${answer}ではなくて，${pref}でした！`
         }
         for (const prefName of prefNamesList) {
-            prefInfoMap[prefName].element.style.transition = 'all 2s ease-out'
+            prefInfoMap[prefName].element.style.transition = 'all 20s ease-out'
             prefInfoMap[prefName].element.style.opacity = 1
         }
+        // ここの，svg を指定する必要性がいまいちわかってない
         svg.style.transition = 'all 2s ease-out'
         svg.style.transform = 'scale(0.3) rotate(0)'
 
         await new Promise(r => setTimeout(r, 2000))
-        await new Promise(r => setTimeout(r, 2000))
+        await new Promise(r => setTimeout(r, 100000))
         message.textContent = ``
     }
 }
@@ -123,3 +125,8 @@ window.onload = () => {
     // ここに while を入れると重くなって落ちた（なんでや）
     game()
 }
+
+// 総評
+// viewPort ? の仕組みがよくわかってない
+// 各県だけを指定するのか，svg 全体を指定するのかの違いがよくわかってない
+// promise の使い方がテクくてよくわからなかった
