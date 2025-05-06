@@ -106,7 +106,7 @@ const game = async () => {
             message.textContent = `不正解！ ${answer}ではなくて，${pref}でした！`
         }
         for (const prefName of prefNamesList) {
-            prefInfoMap[prefName].element.style.transition = 'all 20s ease-out'
+            prefInfoMap[prefName].element.style.transition = 'all 2s ease-out'
             prefInfoMap[prefName].element.style.opacity = 1
         }
         // ここの，svg を指定する必要性がいまいちわかってない
@@ -114,7 +114,7 @@ const game = async () => {
         svg.style.transform = 'scale(0.3) rotate(0)'
 
         await new Promise(r => setTimeout(r, 2000))
-        await new Promise(r => setTimeout(r, 100000))
+        await new Promise(r => setTimeout(r, 1800))
         message.textContent = ``
     }
 }
